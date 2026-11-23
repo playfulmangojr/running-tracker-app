@@ -1,0 +1,54 @@
+/* Resets default browser spacing and sets the base font */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Styles the dark top header bar from the design */
+.top-bar {
+  background-color: #0b0e14;
+  color: #ffffff;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Styles the Streak text on the top left */
+.streak-display {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/* Centers the D W M buttons */
+.timeframe-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+/* Styles the D, W, and M buttons */
+.time-btn {
+  background: none;
+  border: none;
+  color: #a0a8b8;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+/* Highlights the currently active timeframe button */
+.time-btn.active {
+  color: #ffffff;
+  font-weight: bold;
+  border-bottom: 2px solid #ffffff;
+}
+
+/* Centers the Today 0 label below the buttons */
+.timeframe-label {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 6px;
+  color: #d0d5dd;
+}

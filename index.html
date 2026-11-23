@@ -18,6 +18,19 @@
 </head>
 
 <body>
-  <!-- Application features will be added here -->
+<!-- Top dark bar containing Streak, D/W/M buttons, and timeframe label -->
+  <header class="top-bar">
+    <div class="streak-display">Streak <span id="streak-count">0</span></div>
+
+    <!-- Timeframe selector buttons -->
+    <div class="timeframe-buttons">
+      <button id="btn-d" class="time-btn active" onclick="setTimeframe('D')">D</button>
+      <button id="btn-w" class="time-btn" onclick="setTimeframe('W')">W</button>
+      <button id="btn-m" class="time-btn" onclick="setTimeframe('M')">M</button>
+    </div>
+
+    <!-- Displays the selected timeframe and value -->
+    <div id="timeframe-label" class="timeframe-label">Today 0</div>
+  </header>
 </body>
 </html>
