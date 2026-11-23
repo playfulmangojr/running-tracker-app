@@ -52,3 +52,39 @@ body {
   margin-top: 6px;
   color: #d0d5dd;
 }
+/* Centers the title and goal card in the middle of the screen */
+.main-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px;
+  padding: 0 20px;
+}
+
+/* Styles the main RT Tracker heading */
+.app-title {
+  font-size: 28px;
+  font-weight: normal;
+  margin-bottom: 24px;
+}
+
+/* Styles the dark rounded daily goal box */
+.goal-card {
+  background-color: #0b0e14;
+  color: #ffffff;
+  border-radius: 16px;
+  padding: 24px 36px;
+  text-align: center;
+  width: 240px;
+}
+
+/* Styles the goal text inside the card */
+.goal-title {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+}
+
+.goal-amount {
+  margin: 0;
+  font-size: 20px;
+}
