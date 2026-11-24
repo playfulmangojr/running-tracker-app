@@ -88,3 +88,11 @@ body {
   margin: 0;
   font-size: 20px;
 }
+/* Places the Steps and Km counters side-by-side at the bottom */
+.stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin-top: 100px;
+  font-size: 18px;
+}
