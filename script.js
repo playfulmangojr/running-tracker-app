@@ -7,6 +7,10 @@ let watchId = null;
 let lastLat = null;
 let lastLon = null;
 
+// Track streak count and whether today's 5,000-step goal was already reached
+let streakCount = 0;
+let goalReachedToday = false;
+
 // FUNCTION:
 // Runs when the user clicks D, W, or M to switch the timeframe view.
 function setTimeframe(period) {
@@ -36,10 +40,11 @@ function setTimeframe(period) {
 }
 
 // FUNCTION:
-// Updates the Steps, Km, and top timeframe numbers on the screen
+// Updates the Steps, Km, Streak, and top timeframe numbers on the screen
 function updateDisplay() {
   document.getElementById("km-count").textContent = totalKm.toFixed(2);
   document.getElementById("steps-count").textContent = totalSteps;
+  document.getElementById("streak-count").textContent = streakCount;
 
   const label = document.getElementById("timeframe-label");
   if (currentPeriod === "D") {
@@ -56,6 +61,7 @@ function updateDisplay() {
 function addTestDistance(kmAdded) {
   totalKm += kmAdded;
   totalSteps = Math.round(totalKm * 1300);
+  checkGoalAndSave();
   updateDisplay();
 }
 
@@ -122,3 +128,46 @@ function calculateKm(lat1, lon1, lat2, lon2) {
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   return R * c;
 }
+
+// FUNCTION:
+// Checks if the 5,000-step daily goal is reached and saves progress to localStorage
+function checkGoalAndSave() {
+  if (totalSteps >= 5000 && !goalReachedToday) {
+    streakCount += 1;
+    goalReachedToday = true;
+    document.getElementById("gps-status").textContent = "Daily goal reached! Streak +1!";
+  }
+
+  // Save values in the browser so they remain after refreshing
+  localStorage.setItem("rt_totalKm", totalKm);
+  localStorage.setItem("rt_totalSteps", totalSteps);
+  localStorage.setItem("rt_streakCount", streakCount);
+  localStorage.setItem("rt_goalReached", goalReachedToday);
+}
+
+// FUNCTION:
+// Loads saved steps, kilometers, and streak when the webpage opens
+function loadProgress() {
+  const savedKm = localStorage.getItem("rt_totalKm");
+  const savedSteps = localStorage.getItem("rt_totalSteps");
+  const savedStreak = localStorage.getItem("rt_streakCount");
+  const savedGoal = localStorage.getItem("rt_goalReached");
+
+  if (savedKm !== null) {
+    totalKm = parseFloat(savedKm);
+  }
+  if (savedSteps !== null) {
+    totalSteps = parseInt(savedSteps);
+  }
+  if (savedStreak !== null) {
+    streakCount = parseInt(savedStreak);
+  }
+  if (savedGoal === "true") {
+    goalReachedToday = true;
+  }
+
+  updateDisplay();
+}
+
+// Run loadProgress automatically when the page loads
+loadProgress();
