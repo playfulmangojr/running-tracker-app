@@ -96,3 +96,33 @@ body {
   margin-top: 100px;
   font-size: 18px;
 }
+/* Arranges the run buttons below the stats */
+.controls-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+/* Styles the main Start/Stop GPS button */
+.action-btn {
+  background-color: #0b0e14;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* Styles the secondary test run button */
+.secondary-btn {
+  background-color: #e4e7ec;
+  color: #0b0e14;
+}
+
+/* Styles the GPS status message */
+.status-text {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #555555;
+}
